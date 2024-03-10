@@ -4,11 +4,17 @@
 <script>
 <!--
 function rev(s){
+    var sharp="";
+    var pos=s.indexOf(s,"#");
+    if ( pos >= 0 ){
+        sharp = s.substr(pos);
+        s = s.substr(0,pos);
+    }
     var r="";
     for (var i=s.length-1 ; i >= 0 ; i-- ){
         r = r + s.substr(i,1);
     }
-    return r
+    return r + sharp;
 }
 function start(){
     var qpos=location.href.indexOf("?");
