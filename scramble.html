@@ -19,11 +19,11 @@ function rev(s){
 function start(){
     var qpos=location.href.indexOf("?");
     if ( qpos >= 0 ){
-        var a = document.getElementById("movesure");
+        var a = document.getElementById("anc");
         var url = rev(location.href.substr(qpos+1));
         a.href= url;
         a.innerText=url;
-        a.style.display="";
+        document.getElementById("movesure").style.display = "";
     } else {
         var d = document.getElementById("urlform");
         d.style.display = "";
@@ -37,9 +37,14 @@ function scramble(){
 </head>
 <body onLoad="start()">
 <form id="urlform" name="form1" method="post" style="display:none">
+    <p>URL文字列の前後をひっくりかえした、リンク元が検索しづらい遷移用URLを作成します。
+        <br />すべてJavaScriptだけで処理するので、サーバ側にはデータを残しません。</p>
     <div>URL: <input type="text" name="source" value="" size="255"/></div>
     <input type="button" onClick="JavaScript:scramble()" value="Scramble" />
 </form>
-<a id="movesure" href="" style="display:none">URL</a>
+<div id="movesure" style="display:none">
+<p>次のURLへ移動します。問題なければクリックしてください。</p>
+<a id="anc" href="">URL</a>
+</div>
 </body>
 </html>
