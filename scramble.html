@@ -13,8 +13,14 @@ function rev(s){
 function start(){
     var qpos=location.href.indexOf("?");
     if ( qpos >= 0 ){
-        location.href=rev(location.href.substr(qpos+1))
-        return;
+        var a = document.getElementById("movesure");
+        var url = rev(location.href.substr(qpos+1));
+        a.href= url;
+        a.innerText=url;
+        a.style.display="";
+    } else {
+        var d = document.getElementById("urlform");
+        d.style.display = "";
     }
 }
 function scramble(){
@@ -24,9 +30,10 @@ function scramble(){
 </script>
 </head>
 <body onLoad="start()">
-<form name="form1" method="post">
-<div>URL: <input type="text" name="source" value="" size="255"/></div>
-<input type="button" onClick="JavaScript:scramble()" value="Scramble" />
+<form id="urlform" name="form1" method="post" style="display:none">
+    <div>URL: <input type="text" name="source" value="" size="255"/></div>
+    <input type="button" onClick="JavaScript:scramble()" value="Scramble" />
 </form>
+<a id="movesure" href="" style="display:none">URL</a>
 </body>
 </html>
