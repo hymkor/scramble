@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>URL Scamble</title>
+<script>
+<!--
+function rev(s){
+    var r="";
+    for (var i=s.length-1 ; i >= 0 ; i-- ){
+        r = r + s.substr(i,1);
+    }
+    return r
+}
+function start(){
+    var qpos=location.href.indexOf("?");
+    if ( qpos >= 0 ){
+        location.href=rev(location.href.substr(qpos+1))
+        return;
+    }
+}
+function scramble(){
+    prompt("",location.href + "?" + rev(window.form1.source.value))
+}
+//-->
+</script>
+</head>
+<body onLoad="start()">
+<form name="form1" method="post">
+<div>URL: <input type="text" name="source" value="" size="255"/></div>
+<input type="button" onClick="JavaScript:scramble()" value="Scramble" />
+</form>
+</body>
+</html>
