@@ -37,9 +37,11 @@ function scramble(){
 </head>
 <body onLoad="start()">
 <form id="urlform" name="form1" method="post" style="display:none">
-    <p>URL文字列の前後をひっくりかえした、リンク元が検索しづらい遷移用URLを作成します。
-        <br />すべてJavaScriptだけで処理するので、サーバ側にはデータを残しません。</p>
-    <div>URL: <input type="text" name="source" value="" size="255"/></div>
+    <p>URL文字列の前後をひっくりかえした、リンク元が検索しづらくなる遷移用URLを作成します。
+    <br />すべてJavaScriptだけで処理し、サーバ側にはデータを残しません。
+    <br />本ページは怒られたら削除する可能性があります。
+    </p>
+    <div>URL: <input type="text" name="source" value="" size="90"/></div>
     <input type="button" onClick="JavaScript:scramble()" value="Scramble" />
 </form>
 <div id="movesure" style="display:none">
