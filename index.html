@@ -3,16 +3,24 @@
 <title>URL Scamble</title>
 <script>
 <!--
-function rev(s){
+function rev(s,mode){
     var sharp="";
     var pos=s.indexOf("#");
     if ( pos >= 0 ){
         sharp = s.substr(pos);
         s = s.substr(0,pos);
     }
+    if ( ! mode ){
+        s = s.replace("%3A",":")
+        s = s.replace("%25","%")
+    }
     var r="";
     for (var i=s.length-1 ; i >= 0 ; i-- ){
         r = r + s.substr(i,1);
+    }
+    if ( mode ){
+        r = r.replace("%","%25")
+        r = r.replace(":","%3A")
     }
     return r + sharp;
 }
@@ -20,7 +28,7 @@ function start(){
     var qpos=location.href.indexOf("?");
     if ( qpos >= 0 ){
         var a = document.getElementById("anc");
-        var url = rev(location.href.substr(qpos+1));
+        var url = rev(location.href.substr(qpos+1),false);
         a.href= url;
         a.innerText=url;
         document.getElementById("movesure").style.display = "";
@@ -30,7 +38,7 @@ function start(){
     }
 }
 function scramble(){
-    prompt("",location.href + "?" + rev(window.form1.source.value))
+    prompt("",location.href + "?" + rev(window.form1.source.value,true))
 }
 //-->
 </script>
