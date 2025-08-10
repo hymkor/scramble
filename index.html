@@ -36,7 +36,16 @@ function start(){
     }
 }
 function scramble(){
-    prompt("",location.href + "?" + rev(window.form1.source.value,true))
+    var url = window.form1.source.value;
+
+    // for bookmarklet to make link texts like `TITLE URL`
+    var pos = url.lastIndexOf(" ");
+    var prefix = ""
+    if ( pos >= 0 ){
+        prefix = url.substr(0,pos+1);
+        url = url.substr(pos+1);
+    }
+    prompt("",prefix + location.href + "?" + rev(url,true))
 }
 //-->
 </script>
