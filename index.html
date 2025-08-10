@@ -37,13 +37,15 @@ function start(){
 }
 function scramble(){
     var url = window.form1.source.value;
-
-    // for bookmarklet to make link texts like `TITLE URL`
-    var pos = url.lastIndexOf(" ");
     var prefix = ""
-    if ( pos >= 0 ){
-        prefix = url.substr(0,pos+1);
-        url = url.substr(pos+1);
+
+    if ( window.form1.skipspace.checked ) {
+        // for bookmarklet to make link texts like `TITLE URL`
+        var pos = url.lastIndexOf(" ");
+        if ( pos >= 0 ){
+            prefix = url.substr(0,pos+1);
+            url = url.substr(pos+1);
+        }
     }
     prompt("",prefix + location.href + "?" + rev(url,true))
 }
@@ -59,6 +61,9 @@ function scramble(){
     <div>URL: <input type="text" name="source" value="" size="90"/></div>
     <input type="button" onClick="JavaScript:scramble()" value="Scramble" />
     <input type="reset" value="Reset" />
+    <div>
+    <label><input type="checkbox" checked name="skipspace">空白文字より前は変更しない(<tt>`TITLE&#x2423;URL`</tt>形式用)</input></label>
+    </div>
 </form>
 <div id="movesure" style="display:none">
     <p>次のURLへ移動します。問題なければクリックしてください。</p>
